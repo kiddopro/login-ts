@@ -8,9 +8,8 @@ export interface UserData {
 
 // creo una estructura de metodos que extiende de UserData y la exporto para mantener la estructura de datos en un solo lugar y mantener tipado
 export interface UserMethods extends UserData {
-  login?(username: string, password: string): void;
+  login?(username: string, password: string): void | boolean;
 
-  login?(username: string, password: string): Boolean;
   register?(username: string, password: string, email?: string): void;
 
   getInfo?(): void;
@@ -28,7 +27,7 @@ export class User implements UserMethods {
     this.email = email;
   }
 
-  login(username: string, password: string): Boolean {
+  login(username: string, password: string): boolean {
     console.log("Logging in...\n");
     return this.username == username && this.password == password
       ? true

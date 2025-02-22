@@ -20,17 +20,18 @@ loginForm.addEventListener("submit", (e) => {
   if (!logged) {
     errorMsg!.innerHTML = "Invalid credentials";
     errorMsg!.style.color = "red";
+    cleanMessage();
     return;
   }
 
   errorMsg!.innerHTML = "Logged in!";
   errorMsg!.style.color = "green";
+
+  cleanMessage();
 });
 
-username.addEventListener("change", () => {
-  errorMsg!.innerHTML = "";
-});
-
-password.addEventListener("change", () => {
-  errorMsg!.innerHTML = "";
-});
+function cleanMessage() {
+  setTimeout(() => {
+    errorMsg!.innerHTML = "";
+  }, 3000);
+}
